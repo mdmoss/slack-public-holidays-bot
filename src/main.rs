@@ -119,7 +119,9 @@ fn send_to_slack(webhook_url: &str, holidays: Vec<Holiday>) -> Result<()> {
     ));
 
     let binding = holidays.iter().into_group_map_by(|h| h.location.clone());
-    let holidays_by_location: Vec<(&Option<String>, &Vec<&Holiday>)> = binding.iter().collect();
+    let mut holidays_by_location: Vec<(&Option<String>, &Vec<&Holiday>)> = binding.iter().collect();
+
+    holidays_by_location.sort_by_key(|(location, _)| *location);
 
     for (location, holidays) in holidays_by_location {
         if let Some(location) = location {
