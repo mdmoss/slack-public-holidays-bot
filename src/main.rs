@@ -47,7 +47,9 @@ fn main() {
 #[derive(Parser)]
 struct Args {
     #[arg(long)]
+    #[arg(help("date to fetch in ISO8601 format (defaults to current day)"))]
     date: Option<String>,
+    #[arg(help("comma-separated list of countries to fetch in 2-letter format (ISO 3166-1 alpha-2, e.g. \"US,UK,AU\")"))]
     countries: String,
 }
 
