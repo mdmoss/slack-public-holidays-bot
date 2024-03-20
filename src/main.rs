@@ -7,6 +7,9 @@ use ureq::OrAnyStatus;
 
 use std::{env, time::Duration};
 
+// The Abstract API returns more than just public holidays - these are the ones we're sure we don't want.
+const DISALLOWED_HOLIDAY_TYPES: [&str; 1] = ["Observance"];
+
 fn main() {
     let args: Args = Args::parse();
 
@@ -69,6 +72,11 @@ fn fetch_holidays_from_abstract(
         .call()?
         .into_json::<Vec<Holiday>>()?
         .into_iter()
+        .filter(|h| {
+            !h.r#type
+                .as_ref()
+                .is_some_and(|t| DISALLOWED_HOLIDAY_TYPES.iter().any(|tt| t == *tt))
+        })
         .map(|mut h| {
             h.drop_empty_string_values();
             h
@@ -89,6 +97,7 @@ struct Holiday {
     name_local: Option<String>,
     country: Option<String>,
     location: Option<String>,
+    r#type: Option<String>,
 }
 
 impl Holiday {
