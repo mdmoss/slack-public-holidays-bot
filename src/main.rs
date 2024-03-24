@@ -196,7 +196,7 @@ fn send_to_slack(webhook_url: &str, holidays: Vec<Holiday>) -> Result<()> {
         "blocks": message_blocks,
     });
 
-    println!("{}", serde_json::to_string_pretty(&message).unwrap());
+    // println!("{}", serde_json::to_string_pretty(&message).unwrap());
 
     let resp = ureq::post(webhook_url)
         .send_json(&message)
