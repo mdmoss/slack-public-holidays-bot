@@ -4,6 +4,8 @@ This is a tiny utility to post public holiday information to Slack each day.
 
 Public holiday information is pulled from the [Abstract API Public Holidays API](https://www.abstractapi.com/api/holidays-api). There's a generous free quota that you probably won't exceed.
 
+You can configure which countries are posted. Great for international teams!
+
 ## Setup and configuration
 
 - Download or build a binary (TODO: set up GitHub actions to publish automatically.)
