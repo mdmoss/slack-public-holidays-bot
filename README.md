@@ -2,7 +2,7 @@
 
 This is a tiny utility to post public holiday information to Slack each day.
 
-Public holiday information is pulled from the [Abstract API Public Holidays API](https://www.abstractapi.com/api/holidays-api). There's a generous free quota that you probably won't exceed.
+Public holiday information is pulled from the [Abstract API Public Holidays API](https://www.abstractapi.com/api/holidays-api). There's a generous free quota that you probably won't exceed for a good while.
 
 You can configure which countries are posted. Great for international teams!
 
@@ -10,7 +10,7 @@ You can configure which countries are posted. Great for international teams!
 
 - Download or build a binary (TODO: set up GitHub actions to publish automatically.)
 
-- Provide three environment variables:
+- Provide two environment variables:
     - `ABSTRACT_API_KEY`: API key for your Abstract API account.
     - `SLACK_WEBHOOK_URL`: URL of a Slack "Incoming Webhook" integration.
 
